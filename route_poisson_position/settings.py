@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from corsheaders.defaults import default_headers
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -24,9 +26,6 @@ SECRET_KEY = '26o+$kf75xb=bta-)0vzn-y4bct$_ud^6f-^%&bzz7)0dwd7_f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['192.168.0.46', '0.0.0.0', '127.0.0.1']
-
 
 # Application definition
 
@@ -40,6 +39,8 @@ INSTALLED_APPS = [
     'route_poisson_api.apps.RoutePoissonApiConfig',
     'rest_framework',
     'django_filters',
+    'django_google_maps',
+    "corsheaders",
 ]
 
 REST_FRAMEWORK = {
@@ -56,7 +57,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+ALLOWED_HOSTS = ['192.168.0.46', '0.0.0.0', '127.0.0.1']
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Access-Control-Allow-Origin',
+]
+
 
 ROOT_URLCONF = 'route_poisson_position.urls'
 
