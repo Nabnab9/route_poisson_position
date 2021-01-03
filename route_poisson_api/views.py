@@ -52,13 +52,10 @@ class ProfilePositionViewSet(viewsets.ModelViewSet):
     }
 
     def get_queryset(self):
-
         profile_name = self.kwargs['profile_name']
         try:
             profile = Profile.objects.get(name=profile_name)
         except Profile.DoesNotExist:
             raise NotFound("Le profil demandé n'existe pas.")
 
-        if profile is not None:
-            return Position.objects.filter()
         return Position.objects.filter(profile=profile)
