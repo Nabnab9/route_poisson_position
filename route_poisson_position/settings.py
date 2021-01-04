@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'route_poisson_api.apps.RoutePoissonApiConfig',
     'rest_framework',
     'django_filters',
-    'django_google_maps',
     "corsheaders",
 ]
 
@@ -61,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-ALLOWED_HOSTS = ['192.168.0.46', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.46', '0.0.0.0', '127.0.0.1', '192.168.1.34']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
